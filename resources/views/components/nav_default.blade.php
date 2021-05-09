@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -16,19 +16,19 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#student">Students</a>
+                    <a class="nav-link" href="{{ route('home.students') }}">Students</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Picket Schedule</a>
+                    <a class="nav-link" href="{{ route('home.pickets') }}">Pickets Schedule</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Subjects Schedule</a>
+                    <a class="nav-link" href="{{ route('home.schedules') }}">Subjects Schedule</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#article">Articles</a>
+                    <a class="nav-link" href="{{ route('frontend.articles.index') }}">Articles</a>
                 </li>
                 <!-- Authentication Links -->
                 @guest

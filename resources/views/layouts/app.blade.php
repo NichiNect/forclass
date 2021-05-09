@@ -24,6 +24,9 @@
         html {
             scroll-behavior: smooth;
         }
+        body {
+            background-color: #eaeaea;
+        }
     </style>
     @stack('style')
 </head>
@@ -32,7 +35,21 @@
         <x-nav_default></x-nav_defualt>
         <main>
             @yield('content')
+            <footer>
+                <hr>
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <p class="text-left">Presented by Yoni Widhi &copy; {{ date('Y', time()) }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-right">Made with <i class="fas fa-heart"></i> by Open Source Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
+
     </div>
 
     {{-- jQuery --}}

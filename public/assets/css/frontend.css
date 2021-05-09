@@ -13,7 +13,7 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
-nav, .jumbotron {
-    background: rgb(103,119,239) !important;
-    background: linear-gradient(90deg, rgba(103,119,239,1) 51%, rgba(189,73,227,1) 100%) !important;
+nav ul .nav-link:hover {
+    font-style: italic;
+    color: #3490dc !important;
 }

@@ -15,4 +15,19 @@ class HomeController extends Controller
     {
         return view('frontend.home');
     }
+
+    public function students()
+    {
+        return view('frontend.students');
+    }
+
+    public function schedules()
+    {
+        return view('frontend.schedules');
+    }
+
+    public function pickets()
+    {
+        return view('frontend.pickets');
+    }
 }
