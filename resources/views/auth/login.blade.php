@@ -14,14 +14,16 @@
         
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                            @csrf
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input name="email" id="email" type="email" class="form-control" tabindex="1" required autofocus>
-                                <div class="invalid-feedback">
-                                    @error('email')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
+                                <label for="username">Username</label>
+                                <input name="username" id="username" type="username" class="form-control" tabindex="1" required autofocus>
+                                @error('username')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    {{-- {{ $message }} --}}
+                                @enderror
+                                {{-- <div class="invalid-feedback">
+                                </div> --}}
                             </div>
             
                             <div class="form-group">

@@ -19,98 +19,35 @@
             </div>
         </div>
         <div class="row my-4">
+            @forelse ($students as $student)
             <div class="col-lg-6 my-4">
                 <a href="#" style="text-decoration: none;">
                     <div class="card shadow-sm rounded student">
-                        {{-- <div class="card-body "> --}}
-                            <div class="row">
-                                <div class="col-5">
-                                    <img src="{{ asset('storage/images/students/ahmad-saugi.png') }}" alt="" class="img-fluid student-img">
-                                </div>
-                                <div class="col-7 px-3 py-3">
-                                    <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
-                                    <small class="text-muted student-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
-                                    </small>
-                                    <br>
-                                    <small>
-                                        <span class="text-primary">More information..</span>
-                                    </small>
-                                </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <img src="{{ $student->getImageStudent() }}" alt="" class="img-fluid student-img">
                             </div>
-                        {{-- </div> --}}
+                            <div class="col-7 px-3 py-3">
+                                <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
+                                <small class="text-muted student-description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
+                                </small>
+                                <br>
+                                <small>
+                                    <span class="text-primary">More information..</span>
+                                </small>
+                            </div>
+                        </div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-6 my-4">
-                <a href="#" style="text-decoration: none;">
-                    <div class="card shadow-sm rounded student">
-                        {{-- <div class="card-body "> --}}
-                            <div class="row">
-                                <div class="col-5">
-                                    <img src="{{ asset('storage/images/students/ahmad-saugi.png') }}" alt="" class="img-fluid student-img">
-                                </div>
-                                <div class="col-7 px-3 py-3">
-                                    <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
-                                    <small class="text-muted student-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
-                                    </small>
-                                    <br>
-                                    <small>
-                                        <span class="text-primary">More information..</span>
-                                    </small>
-                                </div>
-                            </div>
-                        {{-- </div> --}}
+            @empty
+                <div class="col-lg-12">
+                    <div class="d-flex justify-content-center">
+                        <h4 class="font-weight-bold">Data not found!</h4>
                     </div>
-                </a>
-            </div>
-            <div class="col-lg-6 my-4">
-                <a href="#" style="text-decoration: none;">
-                    <div class="card shadow-sm rounded student">
-                        {{-- <div class="card-body "> --}}
-                            <div class="row">
-                                <div class="col-5">
-                                    <img src="{{ asset('storage/images/students/ahmad-saugi.png') }}" alt="" class="img-fluid student-img">
-                                </div>
-                                <div class="col-7 px-3 py-3">
-                                    <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
-                                    <small class="text-muted student-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
-                                    </small>
-                                    <br>
-                                    <small>
-                                        <span class="text-primary">More information..</span>
-                                    </small>
-                                </div>
-                            </div>
-                        {{-- </div> --}}
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-6 my-4">
-                <a href="#" style="text-decoration: none;">
-                    <div class="card shadow-sm rounded student">
-                        {{-- <div class="card-body "> --}}
-                            <div class="row">
-                                <div class="col-5">
-                                    <img src="{{ asset('storage/images/students/ahmad-saugi.png') }}" alt="" class="img-fluid student-img">
-                                </div>
-                                <div class="col-7 px-3 py-3">
-                                    <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
-                                    <small class="text-muted student-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
-                                    </small>
-                                    <br>
-                                    <small>
-                                        <span class="text-primary">More information..</span>
-                                    </small>
-                                </div>
-                            </div>
-                        {{-- </div> --}}
-                    </div>
-                </a>
-            </div>
+                </div>
+            @endforelse
             
         </div>
         <div class="text-right">

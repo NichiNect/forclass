@@ -8,15 +8,18 @@
       </div>
       <ul class="sidebar-menu">
           <li class="menu-header">Dashboard</li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown {{ request()->is('admin/dashboard') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             <ul class="dropdown-menu">
-              <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
-              <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+              <li><a class="nav-link" href="{{ route('dashboard') }}">General Dashboard</a></li>
+              {{-- <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li> --}}
             </ul>
           </li>
+          <li class="{{ request()->is('admin/students*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.students.index') }}"><i class="fas fa-users"></i> <span>Students</span></a>
+          </li>
           <li class="menu-header">Starter</li>
-          <li class="nav-item dropdown active">
+          <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
             <ul class="dropdown-menu">
               <li class="active"><a class="nav-link" href="layout-default.html">Default Layout</a></li>

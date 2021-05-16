@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Show the Frontend Page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -18,7 +19,8 @@ class HomeController extends Controller
 
     public function students()
     {
-        return view('frontend.students');
+        $students = Student::latest()->limit(6)->get();
+        return view('frontend.students', compact('students'));
     }
 
     public function schedules()
