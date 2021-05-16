@@ -12,7 +12,7 @@ class Student extends Model
     protected $table = 'students';
 
     protected $fillable = [
-        'student_role', 'name', 'picture', 'description'
+        'no_absen', 'student_role', 'name', 'picture', 'description'
     ];
 
     public function getImageStudent()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentsTable extends Migration
+class CreateDaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_absen');
-            $table->enum('student_role', ['Siswa Kelas', 'Ketua Kelas', 'Wakil Ketua Kelas', 'Sekretaris', 'Bendahara']);
-            $table->string('name');
-            $table->string('picture');
-            $table->text('description');
+            $table->string('day');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('days');
     }
 }

@@ -28,6 +28,11 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                                 <tr>
+                                    <th>Absent Number</th>
+                                    <td>:</td>
+                                    <td>{{ $student->no_absen }}</td>
+                                </tr>
+                                <tr>
                                     <th>Name</th>
                                     <td>:</td>
                                     <td>{{ $student->name }}</td>

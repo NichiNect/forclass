@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\ArticleController;
 
 /*
@@ -42,6 +44,9 @@ Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('frontend
 
 Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('users-management')->group(function() {
+        Route::get('', [UserManagement::class, 'index'])->name('admin.users.index');
+    });
     Route::prefix('students')->group(function() {
         Route::get('', [StudentController::class, 'index'])->name('admin.students.index');
         Route::get('/create-new-student', [StudentController::class, 'create'])->name('admin.students.create');
@@ -50,5 +55,13 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::get('/edit-data-student/{id}', [StudentController::class, 'edit'])->name('admin.students.edit');
         Route::put('/edit-data-student/{id}', [StudentController::class, 'update'])->name('admin.students.update');
         Route::delete('/delete-data-student/{id}', [StudentController::class, 'destroy'])->name('admin.students.destroy');
+    });
+    Route::prefix('subjects')->group(function() {
+        Route::get('', [SubjectController::class, 'index'])->name('admin.subjects.index');
+        Route::get('/create-new-subject', [SubjectController::class, 'create'])->name('admin.subjects.create');
+        Route::post('/create-new-subject', [SubjectController::class, 'store'])->name('admin.subjects.store');
+        Route::get('/edit-data-subject/{id}', [SubjectController::class, 'edit'])->name('admin.subjects.edit');
+        Route::put('/edit-data-subject/{id}', [SubjectController::class, 'update'])->name('admin.subjects.update');
+        Route::delete('/delete-data-subject/{id}', [SubjectController::class, 'destroy'])->name('admin.subjects.destroy');
     });
 });

@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
       <div class="sidebar-brand">
-        <a href="index.html">Stisla</a>
+        <a href="index.html">ForClass</a>
       </div>
       <div class="sidebar-brand sidebar-brand-sm">
-        <a href="index.html">St</a>
+        <a href="index.html">fC</a>
       </div>
       <ul class="sidebar-menu">
           <li class="menu-header">Dashboard</li>
@@ -15,9 +15,24 @@
               {{-- <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li> --}}
             </ul>
           </li>
+
+          <li class="{{ request()->is('admin/users-management*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.users.index') }}"><i class="fas fa-users-cog"></i> <span>Users Management</span></a>
+          </li>
+
           <li class="{{ request()->is('admin/students*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.students.index') }}"><i class="fas fa-users"></i> <span>Students</span></a>
           </li>
+
+          <li class="menu-header">Subjects & Schedules</li>
+
+          <li class="{{ request()->is('admin/subjects*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.subjects.index') }}"><i class="fas fa-book"></i> <span>Subjects</span></a>
+          </li>
+          <li class="{{ request()->is('admin/schedules*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.subjects.index') }}"><i class="fas fa-list"></i> <span>Schedules</span></a>
+          </li>
+
           <li class="menu-header">Starter</li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>

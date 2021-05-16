@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->paginate(15);
+        $students = Student::latest()->get();
 
         return view('admin.students.index', compact('students'));
     }
@@ -51,6 +51,7 @@ class StudentController extends Controller
         }
 
         $student = Student::create([
+            'no_absen' => $r->no_absen,
             'student_role' => $r->role,
             'name' => $r->name,
             'picture' => $imgName,
@@ -112,6 +113,7 @@ class StudentController extends Controller
         }
 
         $oldStudent->update([
+            'no_absen' => $r->no_absen,
             'student_role' => $r->role,
             'name' => $r->name,
             'picture' => $imgName,

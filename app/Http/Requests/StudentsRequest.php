@@ -24,6 +24,7 @@ class StudentsRequest extends FormRequest
     public function rules()
     {
         return [
+            'no_absen'=> ['required', 'numeric'],
             'role' => ['required'],
             'name'=> ['required'],
             'picture' => ['mimes:jpg,png,jpeg'],

@@ -8,6 +8,13 @@
         @enderror
     </div>
     <div class="form-group">
+        <label for="no_absen" class="form-label">Absent Number</label>
+        <input type="number" name="no_absen" id="no_absen" class="form-control" placeholder="Fill the absent number.." value="{{ $student->no_absen }}">
+        @error('no_absen')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+    <div class="form-group">
         <label for="picture" class="form-label">Picture</label>
         <div class="row">
             <div class="col-lg-4">
@@ -62,6 +69,13 @@
         <label for="name" class="form-label">Name</label>
         <input type="text" name="name" id="name" class="form-control" placeholder="Fill the name..">
         @error('name')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="no_absen" class="form-label">Absent Number</label>
+        <input type="number" min="1" max="50" name="no_absen" id="no_absen" class="form-control" placeholder="Fill the absent number..">
+        @error('no_absen')
             <small class="text-danger">{{ $message }}</small>
         @enderror
     </div>
