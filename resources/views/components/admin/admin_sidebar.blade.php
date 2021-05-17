@@ -30,7 +30,7 @@
             <a class="nav-link" href="{{ route('admin.subjects.index') }}"><i class="fas fa-book"></i> <span>Subjects</span></a>
           </li>
           <li class="{{ request()->is('admin/schedules*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('admin.subjects.index') }}"><i class="fas fa-list"></i> <span>Schedules</span></a>
+            <a class="nav-link" href="{{ route('admin.schedules.index') }}"><i class="fas fa-calendar-alt"></i> <span>Schedules</span></a>
           </li>
 
           <li class="menu-header">Starter</li>

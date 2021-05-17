@@ -14,5 +14,17 @@ class Day extends Model
      *
      * @var array
      */
-    protected $fillable = ['day'];
+    protected $fillable = [
+        'day'
+    ];
+
+    /**
+     * Relation Many to One `days` table with `schedules` table
+     */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'day_id', 'id');
+    }
+
+    
 }

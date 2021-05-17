@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Frontend\ArticleController;
 
 /*
@@ -63,5 +64,13 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::get('/edit-data-subject/{id}', [SubjectController::class, 'edit'])->name('admin.subjects.edit');
         Route::put('/edit-data-subject/{id}', [SubjectController::class, 'update'])->name('admin.subjects.update');
         Route::delete('/delete-data-subject/{id}', [SubjectController::class, 'destroy'])->name('admin.subjects.destroy');
+    });
+    Route::prefix('schedules')->group(function() {
+        Route::get('', [ScheduleController::class, 'index'])->name('admin.schedules.index');
+        Route::get('/create-new-subject-schedule', [ScheduleController::class, 'create'])->name('admin.schedules.create');
+        Route::post('/create-new-subject-schedule', [ScheduleController::class, 'store'])->name('admin.schedules.store');
+        Route::get('/{id}/edit-subject-schedule', [ScheduleController::class, 'edit'])->name('admin.schedules.edit');
+        Route::put('/{id}/edit-subject-schedule', [ScheduleController::class, 'update'])->name('admin.schedules.update');
+        Route::delete('/{id}/delete-subject-schedule', [ScheduleController::class, 'destroy'])->name('admin.schedules.destroy');
     });
 });

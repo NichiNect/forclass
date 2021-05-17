@@ -14,5 +14,16 @@ class Subject extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name'
+    ];
+
+    /**
+     * Relation Many to One `subjects` table with `schedules` table
+     */
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'subject_id', 'id');
+    }
+    
 }
