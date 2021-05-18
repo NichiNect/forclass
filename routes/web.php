@@ -47,6 +47,13 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::prefix('users-management')->group(function() {
         Route::get('', [UserManagement::class, 'index'])->name('admin.users.index');
+        Route::get('/create-new-user', [UserManagement::class, 'create'])->name('admin.users.create');
+        Route::post('/create-new-user', [UserManagement::class, 'store'])->name('admin.users.store');
+        Route::get('/{id}/detail-data-user', [UserManagement::class, 'show'])->name('admin.users.show');
+        Route::get('/{id}/edit-data-user', [UserManagement::class, 'edit'])->name('admin.users.edit');
+        Route::put('/{id}/edit-data-user', [UserManagement::class, 'update'])->name('admin.users.update');
+        Route::get('/users-confirmation', [UserManagement::class, 'userConfirmation'])->name('admin.users.userconfirmation');
+        Route::put('/{id}/acc-users-confirmation', [UserManagement::class, 'accUserConfirmation'])->name('admin.users.accuserconfirmation');
     });
     Route::prefix('students')->group(function() {
         Route::get('', [StudentController::class, 'index'])->name('admin.students.index');

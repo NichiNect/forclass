@@ -6,11 +6,12 @@
 
 @section('content')
 <div class="section-header">
-    <h1>Data Users Management</h1>
+    <h1>Data Users Not Activated</h1>
     <div class="section-header-breadcrumb">
         <ol class="breadcrumb bg-primary text-white-all my-1">
             <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}"><i class="fas fa-users-cog"></i> Users Management</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-list"></i> Data Users</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}"><i class="fas fa-list"></i> All Data Users</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-list"></i> Data Users Not Activated</li>
         </ol>
     </div>
 </div>
@@ -18,11 +19,25 @@
 <div class="section-content">
     <div class="row">
         <div class="col-lg-12">
+            <div class="collapse" id="mycard-collapse" style>
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h4>For Your Information!</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            This is all of data user account which have not activated yet. As an Admin you can Accept or Decline that request. <br>
+                            If you decline that request, user account are <i>deleted automatically</i>. Please be sure when you take an action!
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente sit aliquid, accusamus quaerat, totam voluptates perferendis blanditiis nisi voluptatum reiciendis, dignissimos error a natus? Dolorem voluptatum consectetur et eius culpa.</p>
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header">
-                    <h4>All Data of Users</h4>
+                    <h4>List Data of Users are Not Activated Yet</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('admin.users.userconfirmation') }}" class="btn btn-success"><i class="fas fa-check fa-fw"></i>Users Confirmation</a>
+                        <a href="#" data-collapse="#mycard-collapse" class="btn btn-info"><i class="fas fa-exclamation fa-fw"></i> Information</a>
                         <a href="{{ route('admin.users.create') }}" class="btn btn-primary"><i class="fas fa-plus fa-fw"></i> Add Data User</a>
                     </div>
                 </div>
@@ -61,12 +76,12 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     <div class="d-inline">
+                                        <a href="{{ route('admin.users.accuserconfirmation', $user->id) }}" class="btn btn-success mx-2 my-2" onclick="return confirm('Are you sure want to ACC this account?')"><i class="fas fa-check"></i></a>
                                         <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary mx-2 my-2 detail"><i class="fas fa-search"></i></a>
-                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success mx-2 my-2"><i class="fas fa-edit"></i></a>
                                         <form action="" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger mx-2 my-2" onclick="return confirm('Are you sure want to delete this?')"><i class="fas fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger mx-2 my-2" onclick="return confirm('Are you sure want to delete this?')"><i class="fas fa-times"></i></button>
                                         </form>
                                     </div>
                                 </td>
@@ -149,13 +164,33 @@ $(document).ready(function() {
     });
 
     $('.detail').fireModal({
-            created: function() {
-            },
-            title: 'My Modal',
-            body: `
-                
-            `,
-        });
+        created: function() {
+        },
+        title: 'My Modal',
+        body: `
+            
+        `,
+    });
+
+    // Collapse Information Card
+    // Collapsable
+  $("[data-collapse]").each(function() {
+    var me = $(this),
+        target = me.data('collapse');
+
+    me.click(function() {
+      $(target).collapse('toggle');
+      $(target).on('shown.bs.collapse', function(e) {
+        e.stopPropagation();
+        me.html('<i class="fas fa-minus"></i>');
+      });
+      $(target).on('hidden.bs.collapse', function(e) {
+        e.stopPropagation();
+        me.html(`<a href="#" data-collapse="#mycard-collapse" class="btn btn-info p-0 px-0"><i class="fas fa-exclamation fa-fw"></i> Information</a>`);
+      });
+      return false;
+    });
+  });
 });
 </script>
 @endpush
