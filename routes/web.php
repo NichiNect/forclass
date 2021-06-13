@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\UserManagement;
+use App\Http\Controllers\Admin\PicketController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\ArticleController;
 
 /*
@@ -80,4 +81,13 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::put('/{id}/edit-subject-schedule', [ScheduleController::class, 'update'])->name('admin.schedules.update');
         Route::delete('/{id}/delete-subject-schedule', [ScheduleController::class, 'destroy'])->name('admin.schedules.destroy');
     });
+    Route::prefix('pickets')->group(function() {
+        Route::get('', [PicketController::class, 'index'])->name('admin.pickets.index');
+        Route::get('/create-new-picket-schedule', [PicketController::class, 'create'])->name('admin.pickets.create');
+        Route::post('/create-new-picket-schedule', [PicketController::class, 'store'])->name('admin.pickets.store');
+        Route::get('/{id}/edit-picket-schedule', [PicketController::class, 'edit'])->name('admin.pickets.edit');
+        Route::put('/{id}/edit-picket-schedule', [PicketController::class, 'update'])->name('admin.pickets.update');
+        Route::delete('/{id}/delete-picket-schedule', [PicketController::class, 'destroy'])->name('admin.pickets.destroy');
+    });
+    
 });

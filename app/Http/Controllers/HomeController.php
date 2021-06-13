@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Day;
+use App\Models\Picket;
+use App\Models\Schedule;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -25,11 +28,14 @@ class HomeController extends Controller
 
     public function schedules()
     {
-        return view('frontend.schedules');
+        $days = Day::with('schedules')->orderBy('id', 'asc')->get();
+        // dd($days);
+        return view('frontend.schedules', compact('days'));
     }
 
     public function pickets()
     {
-        return view('frontend.pickets');
+        $days = Day::with('pickets')->orderBy('id', 'asc')->get();
+        return view('frontend.pickets', compact('days'));
     }
 }

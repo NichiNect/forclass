@@ -60,7 +60,7 @@
     </div>
 
     <div class="form-group">
-        <label for="day" class="form-label">Subject Name</label>
+        <label for="day" class="form-label">Day Name</label>
         <select type="text" name="day" id="day" class="form-control select2" style="width: 50%">
             <option value="" selected disabled>-- Choose the day --</option>
             @foreach ($days as $day)

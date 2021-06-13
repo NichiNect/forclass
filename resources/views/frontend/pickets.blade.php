@@ -18,11 +18,14 @@
                 <hr class="bg-primary devideer">
             </div>
         </div>
+        
+        @foreach ($days as $day)
+            
         <div class="row my-4 justify-content-center">
             <div class="col-lg-10 my-4">
                 <div class="card shadow-lg">
                     <div class="card-header">
-                        <h3>Senin</h3>
+                        <h3>{{ $day->day }}</h3>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover table-striped">
@@ -30,56 +33,33 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name of Student</th>
+                                    <th>Picture of Student</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($day->pickets as $picket)
                                 <tr>
                                     <td>1</td>
-                                    <td>Yoni Widhi</td>
+                                    <td>{{ $picket->student->name }}</td>
+                                    <td>
+                                    <img src="{{ $picket->student->getImageStudent() }}" alt="{{ $picket->student->name }}" class="img-thumbnail img-fluid" style="max-width: 10rem;">
+                                    </td>
                                 </tr>
+                                @empty
                                 <tr>
-                                    <td>2</td>
-                                    <td>Saitama</td>
+                                    <td colspan="3" class="text-center">
+                                        <h5>Data Empty</h5>
+                                    </td>
                                 </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="row my-4 justify-content-center">
-            <div class="col-lg-10 my-4">
-                <div class="card shadow-lg">
-                    <div class="card-header">
-                        <h3>Selasa</h3>
-                    </div>
-                    <div class="card-body table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <td>No</td>
-                                    <td>Subjects</td>
-                                    <td>Time</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Pemrograman Dasar</td>
-                                    <td>07.00 - 09.00</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Pemrograman Web Dasar</td>
-                                    <td>10.00 - 11.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        @endforeach
     </section>
 </div>
 @endsection

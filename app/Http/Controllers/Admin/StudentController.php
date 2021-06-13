@@ -137,6 +137,10 @@ class StudentController extends Controller
     {
         $student = Student::findOrFail($id);
 
+        foreach($student->pickets as $p) {
+            $p->delete();
+        }
+
         Storage::disk('public')->delete('/images/students/' . $student->picture);
         $student->delete();
 

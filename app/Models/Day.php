@@ -26,5 +26,13 @@ class Day extends Model
         return $this->hasMany(Schedule::class, 'day_id', 'id');
     }
 
+    /**
+     * Relation Many to One `days` table with `pickets` table
+     */
+    public function pickets()
+    {
+        return $this->hasMany(Picket::class, 'day_id', 'id');
+    }
+
     
 }

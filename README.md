@@ -1,62 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1 align="center">Halo, selamat datang di Sistem Informasi ForClass</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img align="center" src="http://ForTheBadge.com/images/badges/built-with-love.svg"> <img align="center" src="http://ForTheBadge.com/images/badges/makes-people-smile.svg"> <img align="center" src="http://ForTheBadge.com/images/badges/built-by-developers.svg">
 
-## About Laravel
+[![](https://img.shields.io/github/issues/NichiNect/forclass?style=flat-square)](https://img.shields.io/github/issues/NichiNect/forclass?style=flat-square) [![](https://img.shields.io/github/stars/NichiNect/forclass?style=flat-square)](https://img.shields.io/github/stars/NichiNect/forclass?style=flat-square) ![](https://img.shields.io/github/forks/NichiNect/forclass?style=flat-square) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![HitCount](http://hits.dwyl.com/NichiNect/https://github.com/NichiNect/forclass.svg)](http://hits.dwyl.com/NichiNect/https://github.com/NichiNect/forclass) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![GitHub followers](https://img.shields.io/github/followers/NichiNect.svg?style=flat-square&label=Follow&maxAge=2592000)](https://github.com/NichiNect?tab=followers)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Tentang Repo Ini?
+Repositori ini adalah Web App pengelolaan kelas di smk dengan Laravel 8. Awalnya project ini dibuat oleh <a href="https://github.com/NichiNect"> Yoni Widhi C </a> dengan referensi dari beberapa teman di komunitas, serta sebagai uji coba latihan. **Sistem Informasi Pengelolaan Kelas (ForClass) ini adalah web app untuk me-manajemen atau mengatur data-data yang ada di kelas kelas.**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Fitur Apa Saja Yang Tersedia di Web App Ini?
+- Autentikasi Admin, Operator, dan Siswa/Student 
+- Terdapat 3 User Level
+- User Management
+- Pengelolaan Siswa/Students & CRUD
+- Pengelolaan Mata Pelajaran/Subjects & CRUD
+- Pengelolaan Jadwal Pelajaran/Subjects Schedules & CRUD
+- Pengelolaan Jadwal Piket/Pickets Schedules & CRUD
+- Pengelolaan Artikel/Articles & CRUD
+- Cetak Laporan (sesuai role)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+------------
 
-## Learning Laravel
+## 💻 Install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clone Repository**
+```bash
+git clone https://github.com/NichiNect/forclass.git
+cd forclass
+composer install
+npm install
+npm run dev (optional)
+copy .env.example .env
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Buka ```.env``` lalu ubah baris berikut sesuai dengan konfigurasi database**
+```
+DB_PORT=3306
+DB_DATABASE=laravel_forclass
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Laravel Sponsors
+3. **Instalasi website**
+```bash
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+```
+Saya menyediakan data dummy simple untuk database nya jika terjadi error pada migration atau seeding. silahkan import file ```laravel_forclass.sql``` pada database Anda.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4. **Run the website**
+```bash
+php artisan serve
+```
 
-### Premium Partners
+------------
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+### 👤 Default Account for testing
+	
+**Admin Default Account**
+- Username: yoniwidhi
+- Password: thispassword
 
-## Contributing
+**Operator Default Account**
+- Username : operator1
+- Password : thispassword
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+------------
 
-## Code of Conduct
+## 🧑 Author
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+👤 <a href="https://www.facebook.com/yoniwidhi"> **Yoni Widhi**</a>
+- Facebook : <a href="https://www.facebook.com/yoniwidhi"> Yoni Widhi</a>
+- Telegram : <a href="https://t.me/yoniwidhi"> Yoni Widhi</a>
 
-## Security Vulnerabilities
+------------
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🤝 Contributing
+Contributions, issues and feature requests di persilahkan.
+Jangan ragu untuk memeriksa halaman masalah jika Anda ingin berkontribusi. **Berhubung Project ini saya yang mengerjakannya sendiri, namun banyak fitur yang kalian dapat tambahkan silahkan berkontribusi yaa!**

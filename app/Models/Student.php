@@ -24,4 +24,9 @@ class Student extends Model
     {
         return asset('storage/images/students/'.$this->picture);
     }
+
+    public function pickets()
+    {
+        return $this->hasMany(Picket::class, 'student_id', 'id');
+    }
 }

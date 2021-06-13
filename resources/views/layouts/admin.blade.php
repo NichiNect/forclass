@@ -39,10 +39,10 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; {{ date('Y', time()) }} <div class="bullet"></div> Starter Kit <a href="https://github.com/NichiNect">Yoni Widhi Cahyadi</a>
+          Copyright &copy; {{ date('Y', time()) }} <div class="bullet"></div> Presented By <a href="https://github.com/NichiNect">Yoni Widhi Cahyadi</a>
         </div>
         <div class="footer-right">
-          2.3.0
+          Open Source Project
         </div>
       </footer>
     </div>
