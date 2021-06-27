@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Day;
-use App\Models\Picket;
-use App\Models\Schedule;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -17,12 +15,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $students = Student::where('student_role', '!=', 'Siswa Kelas')->latest()->get();
+        return view('frontend.home', compact('students'));
     }
 
     public function students()
     {
-        $students = Student::latest()->limit(6)->get();
+        $students = Student::latest()->paginate(10);
         return view('frontend.students', compact('students'));
     }
 

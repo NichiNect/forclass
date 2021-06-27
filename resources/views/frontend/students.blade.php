@@ -6,6 +6,9 @@
         max-width: 60%;
         border: 1px solid #6777ef;
     }
+    .pagination{
+        float: right;
+    }
 </style>
 @endpush
 
@@ -28,9 +31,9 @@
                                 <img src="{{ $student->getImageStudent() }}" alt="" class="img-fluid student-img">
                             </div>
                             <div class="col-7 px-3 py-3">
-                                <h4 class="text-dark student-name">Yoni Widhi Cahyadi</h4>
+                                <h4 class="text-dark student-name">{{ $student->name }}</h4>
                                 <small class="text-muted student-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et nibh facilisis, accumsan tellus id, imperdiet nisl. Q...
+                                    {!! Str::limit($student->description, 200) !!}
                                 </small>
                                 <br>
                                 <small>
@@ -51,7 +54,8 @@
             
         </div>
         <div class="text-right">
-            <a href="#" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a>
+            {{-- <a href="#" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a> --}}
+            {{ $students->links() }}
         </div>
     </section>
 </div>

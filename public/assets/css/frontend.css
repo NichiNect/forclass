@@ -17,3 +17,7 @@ nav ul .nav-link:hover {
     font-style: italic;
     color: #3490dc !important;
 }
+
+#student .student-img {
+    max-width: 10rem;
+}

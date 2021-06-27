@@ -63,7 +63,7 @@ class LoginController extends Controller
             $this->username() => 'required|string|exists:users,' . $this->username() . ',is_active,1',
             'password' => 'required|string',
         ], [
-            $this->username() . '.exists' => 'The selected username are not activated by Admin yet.'
+            $this->username() . '.exists' => 'The selected username are not activated by Admin yet.',
         ]);
     }
 }

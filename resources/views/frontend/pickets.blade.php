@@ -32,14 +32,19 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>No Absent of Student</th>
                                     <th>Name of Student</th>
                                     <th>Picture of Student</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=1;
+                                @endphp
                                 @forelse ($day->pickets as $picket)
                                 <tr>
-                                    <td>1</td>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $picket->student->no_absen }}</td>
                                     <td>{{ $picket->student->name }}</td>
                                     <td>
                                     <img src="{{ $picket->student->getImageStudent() }}" alt="{{ $picket->student->name }}" class="img-thumbnail img-fluid" style="max-width: 10rem;">

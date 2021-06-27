@@ -18,7 +18,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->get();
+        $students = Student::orderBy('no_absen', 'asc')->get();
 
         return view('admin.students.index', compact('students'));
     }
