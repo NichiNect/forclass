@@ -41,7 +41,7 @@
           <li class="menu-header">Articles</li>
 
           <li class="{{ request()->is('admin/articles*') ? 'active' : '' }}">
-            <a class="nav-link" href=""><i class="fas fa-file-alt"></i> <span>Articles</span></a>
+            <a class="nav-link" href="{{ route('admin.articles.index') }}"><i class="fas fa-file-alt"></i> <span>Articles</span></a>
           </li>
           
         </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Day;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $students = Student::where('student_role', '!=', 'Siswa Kelas')->latest()->get();
-        return view('frontend.home', compact('students'));
+        $articles = Article::with('author')->where('status', 'published')->latest()->limit(3)->get();
+        return view('frontend.home', compact('students', 'articles'));
     }
 
     public function students()

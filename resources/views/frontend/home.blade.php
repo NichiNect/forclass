@@ -17,6 +17,7 @@
         font-size: 15px;
     }
     .btn-outline-light:hover {
+        transition-duration: 300ms;
         background: rgb(103,119,239);
         background: linear-gradient(90deg, rgba(103,119,239,1) 51%, rgba(189,73,227,1) 100%);
         color: aliceblue;
@@ -104,7 +105,7 @@
             @endforeach
         </div>
         <div class="text-right">
-            <a href="#" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a>
+            <a href="{{ route('home.students') }}" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a>
         </div>
     </section>
 
@@ -116,66 +117,34 @@
             </div>
         </div>
         <div class="row my-4">
-            <div class="col-lg-4 my-4">
-                <div class="card">
-                    <img src="{{ asset('storage/images/articles/article1.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <a href="#" class="text-decoration-none article-title">
-                            <h4 class="card-title">Website ForClass Untuk Kelas XII RPL C</h4>
-                        </a>
-                        <p class="card-description article-description text-muted">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, vitae repudiandae. Suscipit temporibus saepe a quos aliquid, incidunt quo labore quam obcaecati rem pariatur neque accusantium tempora autem delectus nihil?
-                        </p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between content-center">
-                        <div>
-                            <i class="fas fa-user mr-1"></i> Administrator
+            @forelse ($articles as $article)
+                <div class="col-lg-4 my-4">
+                    <div class="card">
+                        <img src="{{ $article->getImageArticle() }}" class="card-img-top">
+                        <div class="card-body">
+                            <a href="{{ route('frontend.articles.show', $article->slug) }}" class="text-decoration-none article-title">
+                                <h4 class="card-title">{{ $article->title }}</h4>
+                            </a>
+                            <small class="card-description article-description text-muted">
+                                {!! Str::limit($article->content, 100) !!} <a href="{{ route('frontend.articles.show', $article->slug) }}">read more</a>
+                            </small>
                         </div>
-                        <small>5 minutes ago</small>
+                        <div class="card-footer d-flex justify-content-between content-center">
+                            <div>
+                                <i class="fas fa-user mr-1"></i> {{ $article->author->name }}
+                            </div>
+                            <small>{{ $article->created_at->diffForHumans() }}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 my-4">
-                <div class="card">
-                    <img src="{{ asset('storage/images/articles/article1.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <a href="#" class="text-decoration-none article-title">
-                            <h4 class="card-title">Website ForClass Untuk Kelas XII RPL C</h4>
-                        </a>
-                        <p class="card-description article-description text-muted">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, vitae repudiandae. Suscipit temporibus saepe a quos aliquid, incidunt quo labore quam obcaecati rem pariatur neque accusantium tempora autem delectus nihil?
-                        </p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between content-center">
-                        <div>
-                            <i class="fas fa-user mr-1"></i> Administrator
-                        </div>
-                        <small>5 minutes ago</small>
-                    </div>
+            @empty
+                <div class="col-lg-12">
+                    <h4 class="text-center">Data Empty</h4>
                 </div>
-            </div>
-            <div class="col-lg-4 my-4">
-                <div class="card">
-                    <img src="{{ asset('storage/images/articles/article1.jpg') }}" class="card-img-top">
-                    <div class="card-body">
-                        <a href="#" class="text-decoration-none article-title">
-                            <h4 class="card-title">Informasi UNBK Terbaru</h4>
-                        </a>
-                        <p class="card-description article-description text-muted">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, vitae repudiandae. Suscipit temporibus saepe a quos aliquid, incidunt quo labore quam obcaecati rem pariatur neque accusantium tempora autem delectus nihil?
-                        </p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between content-center">
-                        <div>
-                            <i class="fas fa-user mr-1"></i> Administrator
-                        </div>
-                        <small>5 minutes ago</small>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
         <div class="text-right">
-            <a href="#" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a>
+            <a href="{{ route('frontend.articles.index') }}" class="text-decoration-none">View More.. &rsaquo;&rsaquo;</a>
         </div>
     </section>
 </div>

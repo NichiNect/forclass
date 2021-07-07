@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Frontend;
 use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\PicketController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Frontend\ArticleController;
+use App\Http\Controllers\Admin\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/students', [HomeController::class, 'students'])->name('home.students');
 Route::get('/schedules', [HomeController::class, 'schedules'])->name('home.schedules');
 Route::get('/pickets', [HomeController::class, 'pickets'])->name('home.pickets');
-
-Route::get('/articles', [ArticleController::class, 'index'])->name('frontend.articles.index');
-Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('frontend.articles.show');
+Route::get('/articles', [Frontend\ArticleController::class, 'index'])->name('frontend.articles.index');
+Route::get('/articles/{slug}', [Frontend\ArticleController::class, 'show'])->name('frontend.articles.show');
 
 Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -88,6 +88,16 @@ Route::prefix('admin')->middleware('auth')->group(function() {
         Route::get('/{id}/edit-picket-schedule', [PicketController::class, 'edit'])->name('admin.pickets.edit');
         Route::put('/{id}/edit-picket-schedule', [PicketController::class, 'update'])->name('admin.pickets.update');
         Route::delete('/{id}/delete-picket-schedule', [PicketController::class, 'destroy'])->name('admin.pickets.destroy');
+    });
+
+    Route::prefix('articles')->group(function() {
+        Route::get('', [ArticleController::class, 'index'])->name('admin.articles.index');
+        Route::get('/create-new-article', [ArticleController::class, 'create'])->name('admin.articles.create');
+        Route::post('/create-new-article', [ArticleController::class, 'store'])->name('admin.articles.store');
+        Route::get('/{id}/edit-article', [ArticleController::class, 'edit'])->name('admin.articles.edit');
+        Route::put('/{id}/edit-article', [ArticleController::class, 'update'])->name('admin.articles.update');
+        Route::delete('/{id}/delete-article', [ArticleController::class, 'destroy'])->name('admin.articles.destroy');
+        Route::put('/{id}/acc-publish-article', [ArticleController::class, 'acc'])->name('admin.articles.acc');
     });
     
 });

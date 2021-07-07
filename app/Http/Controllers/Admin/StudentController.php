@@ -103,7 +103,7 @@ class StudentController extends Controller
         $oldStudent = Student::findOrFail($id);
 
         if($r->hasFile('picture')) {
-            Storage::disk('public')->delete('/images/students/' . $oldStudent->picture);
+            Storage::disk('public')->delete('images/students/' . $oldStudent->picture);
             $file = $r->file('picture');
             $extension = $file->extension();
             $imgName = Str::slug($r->name) . '-' . date('d-m-Y') . '.' . $extension;
@@ -141,7 +141,7 @@ class StudentController extends Controller
             $p->delete();
         }
 
-        Storage::disk('public')->delete('/images/students/' . $student->picture);
+        Storage::disk('public')->delete('images/students/' . $student->picture);
         $student->delete();
 
         return redirect()->route('admin.students.index')->with('success', 'Student was deleted successfully!');
